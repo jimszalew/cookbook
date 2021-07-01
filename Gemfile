@@ -13,6 +13,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+  gem 'faraday'
 end
 
 group :development do
