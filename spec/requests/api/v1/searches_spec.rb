@@ -22,11 +22,16 @@ RSpec.describe 'Api::V1::Searches', type: :request do
 
   describe 'POST /create' do
     it 'creates a new search' do
-      req = { dish: { criteria: 'Gnocchi', url: 'https://api.spoonacular.com/recipes/complexSearch?query=Gnocchi'}}
+      req = { dish: { criteria: 'Gnocchi', url: "https://api.spoonacular.com/recipes/complexSearch?apiKey=#{SPOONACULAR_API_KEY}&query=Gnocchi&addRecipeInformation=true"}}
       
       expect(Search.count).to eq(0)
       post '/api/v1/searches', params: req
       expect(Search.count).to eq(1)
+
+      result = JSON.parse(response.body)
+
+      expect(response.status).to eq(200)
+      expect(result['criteria']).to eq('Gnocchi')
     end
   end
 end
