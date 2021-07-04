@@ -33,5 +33,13 @@ RSpec.describe 'Api::V1::Searches', type: :request do
       expect(response.status).to eq(200)
       expect(result['criteria']).to eq('Gnocchi')
     end
+
+    it 'creates new dishes from search' do
+      req = { dish: { criteria: 'Poutine'} }
+
+      expect(Dish.count).to eq(0)
+      post '/api/v1/searches', params: req
+      expect(Dish.count).to eq(4)
+    end
   end
 end
