@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_01_002549) do
+ActiveRecord::Schema.define(version: 2021_07_04_003252) do
+
+  create_table "dishes", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "search_id", null: false
+    t.index ["search_id"], name: "index_dishes_on_search_id"
+  end
 
   create_table "searches", force: :cascade do |t|
     t.string "criteria"
@@ -19,4 +26,5 @@ ActiveRecord::Schema.define(version: 2021_07_01_002549) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "dishes", "searches"
 end
