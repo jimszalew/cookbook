@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_06_195111) do
+ActiveRecord::Schema.define(version: 2021_07_06_205620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -20,7 +20,9 @@ ActiveRecord::Schema.define(version: 2021_07_06_195111) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "search_id", null: false
-    t.hstore "data"
+    t.string "title"
+    t.hstore "ingredients"
+    t.hstore "instructions"
     t.index ["search_id"], name: "index_dishes_on_search_id"
   end
 

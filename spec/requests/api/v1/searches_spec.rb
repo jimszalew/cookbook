@@ -21,12 +21,14 @@ RSpec.describe 'Api::V1::Searches', type: :request do
   end
 
   describe 'POST /create' do
-    it 'creates a new search' do
-      req = { dish: { criteria: 'Gnocchi'} }
+    it 'creates a new search and dishes' do
+      req_1 = { dish: { criteria: 'Gnocchi'} }
       
       expect(Search.count).to eq(0)
-      post '/api/v1/searches', params: req
+      post '/api/v1/searches', params: req_1
       expect(Search.count).to eq(1)
+      expect(Dish.count).to eq(10)
+
 
       result = JSON.parse(response.body)
 
@@ -34,12 +36,12 @@ RSpec.describe 'Api::V1::Searches', type: :request do
       expect(result['criteria']).to eq('Gnocchi')
     end
 
-    it 'creates new dishes from search' do
-      req = { dish: { criteria: 'Poutine'} }
+    # it 'creates new dishes from search' do
+    #   req_2 = { dish: { criteria: 'Poutine'} }
 
-      expect(Dish.count).to eq(0)
-      post '/api/v1/searches', params: req
-      expect(Dish.count).to eq(4)
-    end
+    #   expect(Dish.count).to eq(0)
+    #   post '/api/v1/searches', params: req_2
+    #   expect(Dish.count).to eq(4)
+    # end
   end
 end

@@ -1,4 +1,4 @@
 class DishSerializer < ActiveModel::Serializer
-    attributes :id, :title, :extendedIngredients, :analyzedInstructions
+    attributes :id, :title, :ingredients, :instructions
     belongs_to :search
   end
