@@ -11,8 +11,9 @@ class Api::V1::SearchesController < ApplicationController
     response = query.get
     results = JSON.parse(response.body)
 
-    results.each do
-      search.dishes.create!
+    results['results'].each do |result|
+      byebug
+      search.dishes.create!(result)
     end
 
     render json: search, status: 200

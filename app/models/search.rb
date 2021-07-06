@@ -5,6 +5,6 @@ class Search < ApplicationRecord
   has_many :dishes
 
   def url
-    "https://api.spoonacular.com/recipes/complexSearch?apiKey=#{ENV['SPOONACULAR_API_KEY']}&query=#{self.criteria}&addRecipeInformation=true"
+    "https://api.spoonacular.com/recipes/complexSearch?apiKey=#{ENV['SPOONACULAR_API_KEY']}&query=#{self.criteria}&addRecipeInformation=true&fillIngredients=true"
   end
 end

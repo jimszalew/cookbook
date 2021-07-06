@@ -10,13 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_06_174020) do
+ActiveRecord::Schema.define(version: 2021_07_06_195111) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "hstore"
+  enable_extension "plpgsql"
 
   create_table "dishes", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "search_id", null: false
-    t.string "data"
+    t.bigint "search_id", null: false
+    t.hstore "data"
     t.index ["search_id"], name: "index_dishes_on_search_id"
   end
 
