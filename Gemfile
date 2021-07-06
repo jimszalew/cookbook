@@ -15,6 +15,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'faraday'
+  gem 'awesome_print'
 end
 
 group :development do

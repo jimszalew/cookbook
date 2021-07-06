@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_04_003252) do
+ActiveRecord::Schema.define(version: 2021_07_06_174020) do
 
   create_table "dishes", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "search_id", null: false
+    t.string "data"
     t.index ["search_id"], name: "index_dishes_on_search_id"
   end
 
