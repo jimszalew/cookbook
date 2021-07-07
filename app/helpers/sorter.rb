@@ -1,10 +1,10 @@
 module Sorter
 
   def sorts(searches, params)
-
-    if params['crit_asc'] == 'true'
+    case params['order']
+    when 'crit_asc'
       searches.order('criteria')
-    elsif params['updated_desc'] == 'true'
+    when 'updated_desc'
       searches.reverse
     else
       searches

@@ -22,7 +22,7 @@ RSpec.describe 'Api::V1::Searches', type: :request do
     end
 
     it 'can sort searches alphabetically by criteria' do
-      get '/api/v1/searches?crit_asc=true'
+      get '/api/v1/searches?order=crit_asc'
       results = JSON.parse(response.body)
       sorted_crits = results.pluck('criteria')
       expected_crits = [@search_3.criteria, @search_1.criteria, @search_2.criteria]
@@ -32,7 +32,7 @@ RSpec.describe 'Api::V1::Searches', type: :request do
     end
 
     it 'can sort searches in descending order of updated_at' do
-      get '/api/v1/searches?updated_desc=true'
+      get '/api/v1/searches?order=updated_desc'
       results = JSON.parse(response.body)
       expected = results.pluck('id')
       sorted = [@search_3.id, @search_2.id, @search_1.id]
