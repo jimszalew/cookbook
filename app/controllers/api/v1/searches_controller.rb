@@ -1,8 +1,12 @@
 class Api::V1::SearchesController < ApplicationController
+  include Sorter
+  
   def index
+    # searches = Search.all.order(sort_params(params))
     searches = Search.all
+    sorted = sorts(searches, params)
 
-    render json: searches, status: 200
+    render json: sorted, status: 200
   end
 
   def show
