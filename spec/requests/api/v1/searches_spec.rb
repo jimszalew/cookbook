@@ -36,7 +36,7 @@ RSpec.describe 'Api::V1::Searches', type: :request do
       results = JSON.parse(response.body)
       expected = results.pluck('id')
       sorted = [@search_3.id, @search_2.id, @search_1.id]
-# byebug
+
       expect(response.status).to eq(200)
       expect(sorted).to eq(expected)
     end

@@ -2,7 +2,6 @@ class Api::V1::SearchesController < ApplicationController
   include Sorter
   
   def index
-    # searches = Search.all.order(sort_params(params))
     searches = Search.all
     sorted = sorts(searches, params)
 
