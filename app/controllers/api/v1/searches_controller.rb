@@ -5,6 +5,12 @@ class Api::V1::SearchesController < ApplicationController
     render json: searches, status: 200
   end
 
+  def show
+    search = Search.find(params[:id])
+
+    render json: search, status: 200
+  end
+
   def create
     search = Search.create!(criteria: dish_params[:criteria])
     query = Faraday.new(search.url)
@@ -15,6 +21,13 @@ class Api::V1::SearchesController < ApplicationController
       search.dishes.create({id: r['id'], title: r['title'], ingredients: r['extendedIngredients'][0], instructions: r['analyzedInstructions'][0]})
     end
     render json: search, status: 200
+  end
+
+  def destroy
+    search = Search.find(params[:id])
+    search.destroy
+
+    render json: "#{search.criteria} search object and its related dishes have been deleted", status: 200
   end
 
   private
