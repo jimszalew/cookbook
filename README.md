@@ -8,13 +8,13 @@ https://lit-bastion-79583.herokuapp.com/
 
 ### API Endpoints
 - <code>GET /api/v1/searches</code>
-- Returns a list of all stored searches. Optional parameters include <code>crit_asc</code> (alphabetically by search criteria) and <code>updated_desc</code> which will sort them oldest to newest by their updated_at.
+-- Returns a list of all stored searches. Optional parameters include <code>crit_asc</code> (alphabetically by search criteria) and <code>updated_desc</code> which will sort them oldest to newest by their updated_at.
 - <code>GET /api/v1/searches/:id</code>
-- Returns search with corresponding id
+-- Returns search with corresponding id
 - <code>POST /api/v1/searches</code>
-- Creates a new search object and dishes. Required Parameter <code>search[:criteria]</code>
+-- Creates a new search object and dishes. Required Parameter <code>search[:criteria]</code>
 - <code>DELETE /api/v1/searches/:id</code>
-- Deletes a search with corresponding id and its dishes
+-- Deletes a search with corresponding id and its dishes
 
 ## Running it locally
 1. Initial setup
