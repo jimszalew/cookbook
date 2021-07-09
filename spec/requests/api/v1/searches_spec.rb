@@ -58,6 +58,14 @@ RSpec.describe 'Api::V1::Searches', type: :request do
       expect(search_4.url).to eq(result['url'])
       expect(search_4.dishes.count).to eq(3)
     end
+
+    it 'responds with an error if the search id is not found' do
+      get '/api/v1/searches/311'
+      result = JSON.parse(response.body)
+
+      expect(response.status).to eq(404)
+      expect(result['error']).to eq("Couldn't find Search with 'id'=311")
+    end
   end
 
   describe 'POST #create' do

@@ -10,7 +10,6 @@ class Api::V1::SearchesController < ApplicationController
 
   def show
     search = Search.find(params[:id])
-
     render json: search, status: 200
   end
 
