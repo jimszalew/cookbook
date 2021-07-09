@@ -70,7 +70,7 @@ RSpec.describe 'Api::V1::Searches', type: :request do
 
   describe 'POST #create' do
     it 'creates a new search and dishes' do
-      req = { dish: { criteria: 'Gnocchi'} }
+      req = { search: { criteria: 'Gnocchi' } }
       
       expect(Search.count).to eq(0)
       
@@ -82,6 +82,19 @@ RSpec.describe 'Api::V1::Searches', type: :request do
 
       expect(response.status).to eq(200)
       expect(result['criteria']).to eq('Gnocchi')
+    end
+
+    it 'returns an error for invalid params' do
+      req = { jetski: { criteria: 'Waverunner' } }
+
+      expect(Search.count).to eq(0)
+      
+      post '/api/v1/searches', params: req
+      result = JSON.parse(response.body)
+
+      expect(Search.count).to eq(0)
+      expect(response.status).to eq(422)
+      expect(result['error']).to eq("param is missing or the value is empty: search")
     end
   end
 
@@ -105,6 +118,14 @@ RSpec.describe 'Api::V1::Searches', type: :request do
       expect(response.body).to eq('Pasta search object and its related dishes have been deleted')
       expect(Search.count).to eq(1)
       expect(Dish.count).to eq(3)
+    end
+
+    it 'responds with an error if the search id is not found' do
+      get '/api/v1/searches/311'
+      result = JSON.parse(response.body)
+
+      expect(response.status).to eq(404)
+      expect(result['error']).to eq("Couldn't find Search with 'id'=311")
     end
   end
 end

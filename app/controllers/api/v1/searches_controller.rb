@@ -14,8 +14,9 @@ class Api::V1::SearchesController < ApplicationController
   end
 
   def create
-    search = Search.create!(criteria: dish_params[:criteria])
+    search = Search.create!(criteria: search_params[:criteria])
     query = Faraday.new(search.url)
+    
     response = query.get
     results = JSON.parse(response.body)
 
@@ -34,7 +35,7 @@ class Api::V1::SearchesController < ApplicationController
 
   private
 
-    def dish_params
-      params.require(:dish).permit(:criteria)
+    def search_params
+      params.require(:search).permit(:criteria)
     end
 end
