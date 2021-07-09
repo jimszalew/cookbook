@@ -38,3 +38,10 @@ https://lit-bastion-79583.herokuapp.com/
 
 ### Source API
 **[Spoonacular](https://spoonacular.com/food-api/)**
+
+### Refactor and Upgrade Goals
+1. Slim down the create action in the searches controller. For one, most of that logic can be moved to a spoonacular service leaving basically the search.create and render in the controller action. The dish attributes could use another helper that maps to the renamed keys.
+2. Clean up the searches_spec, maybe separate the different requests into their own spec files for ease of maintainability.
+3. More filtering for searches.
+4. Sortable and filterable endpoints for the dishes created by searches.
+5. A cookbook feature to save favorite dishes to.
