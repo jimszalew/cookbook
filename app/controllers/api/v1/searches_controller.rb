@@ -21,7 +21,7 @@ class Api::V1::SearchesController < ApplicationController
     results = JSON.parse(response.body)
 
     results['results'].each do |r|
-      search.dishes.create({id: r['id'], title: r['title'], ingredients: r['extendedIngredients'][0], instructions: r['analyzedInstructions'][0]})
+      search.dishes.create({title: r['title'], ingredients: r['extendedIngredients'][0], instructions: r['analyzedInstructions'][0]})
     end
     render json: search, status: 200
   end

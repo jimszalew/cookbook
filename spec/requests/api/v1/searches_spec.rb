@@ -108,7 +108,7 @@ RSpec.describe 'Api::V1::Searches', type: :request do
       dish_7 = search_6.dishes.create(title: 'Gluten Free Banana Oatmeal Pancakes', ingredients: {}, instructions: {})
       dish_8 = search_6.dishes.create(title: 'Lemon Ricotta Poppyseed Pancakes', ingredients: {}, instructions: {})
       dish_9 = search_6.dishes.create(title: 'Bacon Pancakes', ingredients: {}, instructions: {})
-
+byebug
       expect(Search.count).to eq(2)
       expect(Dish.count).to eq(6)
 
